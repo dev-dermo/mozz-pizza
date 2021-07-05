@@ -8,6 +8,8 @@
 /server/node_modules
 /client/node_modules
 
+del_notes.txt
+
 # testing
 /coverage
 
