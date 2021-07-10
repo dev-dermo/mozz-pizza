@@ -1,6 +1,20 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+	type User {
+		_id: ID
+		name: String
+		email: String
+		isAdmin: Boolean
+		isPartner: Boolean
+		companyName: String
+	}
+
+	type Auth {
+		token: ID!
+		user: User
+	}
+
 	type Category {
 		_id: ID
 		name: String
@@ -27,6 +41,7 @@ const typeDefs = gql`
 	}
 
 	type Mutation {
+		addUser(name: String!, email: String!, password: String!, companyName: String): Auth
 		addProduct(name: String!, description: String!, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
 		addCategory(name: String!): Category
 		addSubCategory(name: String!): SubCategory

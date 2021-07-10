@@ -1,4 +1,5 @@
-const { Product, Category, SubCategory } = require('../models');
+const { Product, Category, SubCategory, User } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
 	Query: {
@@ -12,6 +13,13 @@ const resolvers = {
 	},
 
 	Mutation: {
+		addUser: async (parent, args) => {
+			const user = await User.create(args);
+			const token = signToken(user);
+			
+			return { token, user };
+		},
+
 		addProduct: async(parent, { name, description, price, imageUrl, categoryId, subCategories }) => {
 			const product = await Product.create({
 				name,
