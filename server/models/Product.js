@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
-const Category = require('./Category');
-const SubCategory = require('./SubCategory');
+// const Category = require('./Category');
+// const SubCategory = require('./SubCategory');
 
 const productSchema = new Schema({
 	name: {
@@ -16,20 +16,22 @@ const productSchema = new Schema({
 		required: true,
 	},
 	category: {
-		type: Category,
+		type: Schema.Types.ObjectId,
+		ref: 'Category',
 		required: true,
 	},
-	subCategories: {
-		type: [SubCategory], // TODO make this an array, with sub document
+	subCategories: [{
+		type: Schema.Types.ObjectId, // TODO make this an array, with sub document
+		ref: 'SubCategory',
 		required: true,
-	},
+	}],
 	imageUrl: {
 		type: String,
-		required: true,
+		required: false,
 	},
 	isActive: {
 		type: Boolean,
-		required: true,
+		default: true,
 	},
 }, { timestamps: true });
 

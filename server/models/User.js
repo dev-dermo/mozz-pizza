@@ -24,7 +24,7 @@ const userSchema = new Schema({
 		type: Boolean,
 		default: true,
 	},
-	business: {
+	companyName: {
 		type: String,
 		unique: true,
 	},

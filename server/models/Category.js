@@ -1,6 +1,12 @@
 const { Schema, model } = require('mongoose');
 
-const categorySchema = new Schema({}, { timestamps: true });
+const categorySchema = new Schema({
+	name: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+}, { timestamps: true });
 
 const Category = model('Category', categorySchema);
 
