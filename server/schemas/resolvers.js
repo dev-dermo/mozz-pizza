@@ -20,6 +20,7 @@ const resolvers = {
 			return { token, user };
 		},
 
+		// TODO: keep behind auth
 		addProduct: async(parent, { name, description, price, imageUrl, categoryId, subCategories }) => {
 			const product = await Product.create({
 				name,
@@ -33,12 +34,14 @@ const resolvers = {
 			return product;
 		},
 
+		// TODO: keep behind auth
 		addCategory: async(parent, { name }) => {
 			const category = await Category.create({ name });
 
 			return category;
 		},
 
+		// TODO: keep behind auth
 		addSubCategory: async(parent, { name }) => {
 			const subCategory = await SubCategory.create({ name });
 
