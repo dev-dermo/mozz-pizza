@@ -1,6 +1,9 @@
 function Home() {
 	return (
-		<p>Homepage page</p>
+		<>
+			<h1>Mozz</h1>
+			<h2>Pizza Kitchen</h2>
+		</>
 	);
 }
 

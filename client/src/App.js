@@ -4,9 +4,11 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 
-import { Navbar, Nav, NavDropdown, Form, Button, FormControl } from 'react-bootstrap';
+import Header from './components/Header';
 
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -35,25 +37,18 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <header>
-          <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">Mozz Pizza</Navbar.Brand>
-
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ml-auto">
-                <Nav.Link as={Link} to="/menu">Menu</Nav.Link>
-                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </header>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/menu" component={Menu} />
-          <Route exact path="/contact" component={Contact} />
-          {/* <Route exact path="/" component={Home} /> */}
-        </Switch>
+        <Header />
+        <Container>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/menu" component={Menu} />
+            <Route exact path="/contact" component={Contact} />
+            <Route path="*" render={() => {
+              return <h1>404</h1>
+            }} />
+            {/* <Route exact path="/" component={Home} /> */}
+          </Switch>
+        </Container>
       </Router>
     </ApolloProvider>
   );

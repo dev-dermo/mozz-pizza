@@ -3,6 +3,12 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
 	Query: {
+		categories: async () => {
+			const categories = Category.find({});
+
+			return categories;
+		},
+
 		products: async () => {
 			const products = await Product.find({})
 				.populate('category')
