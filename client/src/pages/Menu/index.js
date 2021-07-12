@@ -10,34 +10,34 @@ function Menu() {
 	const { loading, data } = useQuery(QUERY_PRODUCTS);
 
 	const products = data?.products || [];
+	const categories = [];
 
-	console.log(products);
-
-	const classic = filterCategories(products, 'Classic Pizzas');
-	const gourmet = filterCategories(products, 'Gourmet Pizzas');
+	products.forEach(product => {
+		if (!categories.includes(product.category.name)) categories.push(product.category.name);
+	});
 
 	return (
 		<>
-			{classic.length > 0 && (
-				<>
-					<h2>Classic Pizzas</h2>
-					<ProductList products={classic} />
-				</>
-			)}
+			<div className="row">
+				<div className="col">
+					<h1 className="text-center mt-4">
+						Menu<br />
+						* * *
+					</h1>
+				</div>
+			</div>
 
-			{gourmet.length > 0 && (
-				<>
-					<h3>Gourmet Pizzas</h3>
-					<ProductList products={gourmet} />
-				</>
-			)}
+			{loading ? <p>Loading...</p> : categories.map(category => {
+				return (
+					<ProductList category={category} products={filterCategories(products, category)} />
+				);
+			})}
 
-			{/* <ProductList category="Gourmet Pizzas" products={products} />
-
-			<ProductList category="Sides" products={products} />
-
-			<ProductList category="Drinks" products={products} /> */}
+			<small>
+				<em><strong>Allergens:</strong> 1 Gluten, 2 Dairy, 3 Egg, 4 Nuts</em>
+			</small>
 		</>
+		
 	);
 }
 

@@ -1,3 +1,16 @@
+:root {
+  --navy: #303040;
+  --red: #e53725;
+}
+
+body {
+  /* background-image: url("./assets/images/bknd.jpg"); */
+  background-image: url("./assets/images/transparent-bknd.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @font-face {
   font-family: 'ElCamino';
   src: url('./assets/fonts/ElCaminoRegular.ttf');
@@ -11,13 +24,48 @@
 h1 {
   font-family: ElCamino;
   font-weight: bolder;
+  color: var(--red);
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: NexaRust;
+  color: var(--navy);
 }
 
 h2 {
+  border-bottom: solid var(--red) 2px;
+  margin: 15px;
+  padding-bottom: 15px;
+}
+
+h3 {
+  font-family: ElCamino;
+  /* color: var(--red); */
+}
+
+header {
+  border-bottom: solid var(--navy) 7px;
+}
+
+#logo-text {
+  font-size: 0.75em;
+  word-wrap: normal;
+}
+
+.header-text span {
   font-family: NexaRust;
+  color: var(--navy);
+}
+
+.header-text span a {
+  color: var(--red);
 }
 
 .nav-link {
   font-family: NexaRust;
   letter-spacing: 3px;
+}
+
+.logo {
+  max-width: 200px;
 }

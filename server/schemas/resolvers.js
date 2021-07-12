@@ -27,10 +27,11 @@ const resolvers = {
 		},
 
 		// TODO: keep behind auth
-		addProduct: async(parent, { name, description, price, imageUrl, categoryId, subCategories }) => {
+		addProduct: async(parent, { name, description, allergens, price, imageUrl, categoryId, subCategories }) => {
 			const product = await Product.create({
 				name,
 				description,
+				allergens,
 				price,
 				imageUrl,
 				category: categoryId,

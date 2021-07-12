@@ -7,6 +7,7 @@ export const QUERY_PRODUCTS = gql`
 			name
 			price
 			description
+			allergens
 			isActive
 			imageUrl
 			category {
@@ -17,6 +18,15 @@ export const QUERY_PRODUCTS = gql`
 				_id
 				name
 			}
+		}
+	}
+`;
+
+export const QUERY_CATEGORIES = gql`
+	query categories {
+		categories {
+			_id
+			name
 		}
 	}
 `;

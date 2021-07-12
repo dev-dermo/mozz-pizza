@@ -29,6 +29,7 @@ const typeDefs = gql`
 		_id: ID
 		name: String
 		description: String
+		allergens: String
 		price: Int
 		category: Category
 		subCategories: [SubCategory]
@@ -43,7 +44,7 @@ const typeDefs = gql`
 
 	type Mutation {
 		addUser(name: String!, email: String!, password: String!, companyName: String): Auth
-		addProduct(name: String!, description: String!, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
+		addProduct(name: String!, description: String, allergens: String, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
 		addCategory(name: String!): Category
 		addSubCategory(name: String!): SubCategory
 	}

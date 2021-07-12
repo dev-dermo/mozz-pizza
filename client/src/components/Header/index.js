@@ -1,4 +1,5 @@
-import Logo from '../../assets/images/logo.png';
+// import Logo from '../../assets/images/logo.png';
+import Logo from '../../assets/images/logo-wide.png';
 
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -9,9 +10,18 @@ function Header() {
 			<Navbar bg="light" expand="lg">
 				<Navbar.Brand href="#home">
 					<Nav.Link as={Link} to="/">
-					<img src={Logo} alt="Mozz Pizza Glengarriff" />
+						<img className="logo img my-4 ml-4" src={Logo} alt="Mozz Pizza Glengarriff" />
+						{/* <br />
+						<span id="logo-text">Neopolitan Pizza</span> */}
 					</Nav.Link>
 				</Navbar.Brand>
+				
+				<Nav class="header-text">
+					<span>
+						Neopolitan Pizza Kitchen<br />
+						<a href="tel:+3532763905">+353 (27) 63905</a>
+					</span>
+				</Nav>
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
