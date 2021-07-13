@@ -1,6 +1,6 @@
 function ProductList({ products, category }) {
 	return (
-		<div className="row my-4">
+		<div className="row my-5">
 			<h2 className="w-100">{category}</h2>
 			{products.map(product => {
 				return (

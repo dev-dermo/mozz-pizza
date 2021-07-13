@@ -7,6 +7,8 @@ import ProductList from '../../components/ProductList';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 
 function Menu() {
+	document.title = 'Test';
+
 	const { loading, data } = useQuery(QUERY_PRODUCTS);
 
 	const products = data?.products || [];
@@ -29,7 +31,7 @@ function Menu() {
 
 			{loading ? <p>Loading...</p> : categories.map(category => {
 				return (
-					<ProductList category={category} products={filterCategories(products, category)} />
+					<ProductList key={category} category={category} products={filterCategories(products, category)} />
 				);
 			})}
 

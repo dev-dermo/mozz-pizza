@@ -1,10 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 import { Container } from 'react-bootstrap';
 
@@ -40,7 +39,7 @@ function App() {
         <Header />
         <Container className="my-5">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Menu} />
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/contact" component={Contact} />
             <Route path="*" render={() => {
@@ -49,6 +48,7 @@ function App() {
             {/* <Route exact path="/" component={Home} /> */}
           </Switch>
         </Container>
+        <Footer />
       </Router>
     </ApolloProvider>
   );

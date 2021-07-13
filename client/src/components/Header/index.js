@@ -8,20 +8,18 @@ function Header() {
 	return (
 		<header>
 			<Navbar bg="light" expand="lg">
-				<Navbar.Brand href="#home">
+				<Navbar.Brand>
 					<Nav.Link as={Link} to="/">
 						<img className="logo img my-4 ml-4" src={Logo} alt="Mozz Pizza Glengarriff" />
-						{/* <br />
-						<span id="logo-text">Neopolitan Pizza</span> */}
 					</Nav.Link>
 				</Navbar.Brand>
 				
-				<Nav class="header-text">
+				<div className="header-text">
 					<span>
 						Neopolitan Pizza Kitchen<br />
 						<a href="tel:+3532763905">+353 (27) 63905</a>
 					</span>
-				</Nav>
+				</div>
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
