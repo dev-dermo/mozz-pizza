@@ -7,7 +7,7 @@ import ProductList from '../../components/ProductList';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 
 function Menu() {
-	document.title = 'Test';
+	document.title = 'Mozz Pizza Menu | Neopolitan Pizza Kitchen, Glengarriff, West Cork';
 
 	const { loading, data } = useQuery(QUERY_PRODUCTS);
 
