@@ -3,6 +3,7 @@ import { filterCategories } from '../../utils/filters';
 import { useQuery } from '@apollo/client';
 
 import ProductList from '../../components/ProductList';
+import Masthead from '../../components/Masthead';
 
 import { QUERY_PRODUCTS } from '../../utils/queries';
 
@@ -20,14 +21,7 @@ function Menu() {
 
 	return (
 		<>
-			<div className="row">
-				<div className="col">
-					<h1 className="text-center mt-4">
-						Menu<br />
-						* * *
-					</h1>
-				</div>
-			</div>
+			<Masthead title="Menu" />
 
 			{loading ? <p>Loading...</p> : categories.map(category => {
 				return (

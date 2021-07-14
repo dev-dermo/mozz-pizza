@@ -1,3 +1,4 @@
+const { AuthenticationError } = require('apollo-server-express');
 const { Product, Category, SubCategory, User } = require('../models');
 const { signToken } = require('../utils/auth');
 
@@ -53,6 +54,24 @@ const resolvers = {
 			const subCategory = await SubCategory.create({ name });
 
 			return subCategory;
+		},
+
+		login: async (parent, { email, password }) => {
+			const user = await User.findOne({ email });
+
+			if (!user) {
+				throw new AuthenticationError('Authentication failed.');
+			}
+
+			const correctPw = await user.isCorrectPassword(password);
+
+			if (!correctPw) {
+				throw new AuthenticationError('Authentication failed.');
+			}
+
+			const token = signToken(user);
+
+			return { token, user };
 		},
 	}
 };
