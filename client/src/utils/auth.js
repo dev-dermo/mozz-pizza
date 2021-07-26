@@ -15,6 +15,10 @@ class AuthService {
 		return !!token && !this.isTokenExpired(token);
 	}
 
+	isAdmin() {
+		return this.getProfile().data.isAdmin;
+	}
+
 	isTokenExpired(token) {
 		try {
 			const decoded = decode(token);
@@ -36,7 +40,7 @@ class AuthService {
 	login(idToken) {
 		localStorage.setItem('id_token', idToken);
 
-		window.location.assign('/');
+		window.location.assign('/admin');
 	}
 
 	logout() {

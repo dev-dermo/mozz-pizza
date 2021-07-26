@@ -7,9 +7,9 @@ db.once('open', async () => {
   await User.deleteMany({});
 
 	await User.create({
-		name: process.env.name,
-		email: process.env.email,
-		password: process.env.password,
+		name: process.env.NAME,
+		email: process.env.EMAIL,
+		password: process.env.PASSWORD,
 		isPartner: false,
 		isAdmin: true,
 	});

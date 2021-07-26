@@ -1,10 +1,17 @@
+import { Link } from 'react-router-dom';
+
 // import Logo from '../../assets/images/logo.png';
 import Logo from '../../assets/images/logo-wide.png';
 
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
+import Auth from '../../utils/auth';
 
 function Header() {
+	const logout = () => {
+		Auth.logout();
+	};
+
 	return (
 		<header>
 			<Navbar bg="light" expand="lg">
@@ -25,6 +32,13 @@ function Header() {
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto">
 						<Nav.Link as={Link} to="/menu">Menu</Nav.Link>
+						{Auth.loggedIn() ? (
+							<>
+							<Nav.Link as={Link} to="/admin">Dashboard</Nav.Link>
+							<Nav.Link onClick={logout} as={Link}>Logout</Nav.Link>
+							{/* <a className="nav-link" onClick={logout} href="/">Logout</a> */}
+							</>
+						) : null}
 						{/* <Nav.Link as={Link} to="/contact">Contact</Nav.Link> */}
 					</Nav>
 				</Navbar.Collapse>

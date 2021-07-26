@@ -1,3 +1,4 @@
+import { Redirect } from 'react-router-dom';
 import { useState } from 'react';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
@@ -43,12 +44,27 @@ function LoginForm() {
 		<form onSubmit={handleFormSubmit}>
 			<div className="form-group">
 				<label htmlFor="email">Email</label>
-				<input onChange={handleChange} id="email" className="form-control" type="email" placeholder="example@example.org" />
+				<input
+          onChange={handleChange}
+          id="email"
+          name="email"
+          value={formState.email}
+          className="form-control"
+          type="email"
+          placeholder="example@example.org"
+        />
 			</div>
 
 			<div className="form-group">
 				<label htmlFor="password">Password</label>
-				<input onChange={handleChange} id="password" className="form-control" type="password" />
+				<input
+          onChange={handleChange}
+          id="password"
+          name="password"
+          value={formState.password}
+          className="form-control"
+          type="password"
+        />
 			</div>
 
 			<button type="login" className="btn btn-primary">Login</button>
