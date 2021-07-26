@@ -1,7 +1,7 @@
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
-import Admin from './pages/Admin';
+// import Admin from './pages/Admin';
 import Login from './pages/Login';
 
 import Header from './components/Header';
