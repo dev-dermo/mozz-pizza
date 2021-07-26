@@ -5,12 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "seed": "node seeders/seeds.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "dotenv": "^10.0.0",
     "nodemon": "^2.0.10"
   },
   "dependencies": {
