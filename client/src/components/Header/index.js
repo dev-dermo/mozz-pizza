@@ -17,7 +17,7 @@ function Header() {
 				<div className="header-text">
 					<span>
 						Neopolitan Pizza Kitchen<br />
-						<a href="tel:+3532763905">+353 (27) 63905</a>
+						<a href="tel:+3532763905">+353 27 63905</a>
 					</span>
 				</div>
 
@@ -25,7 +25,7 @@ function Header() {
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ml-auto">
 						<Nav.Link as={Link} to="/menu">Menu</Nav.Link>
-						<Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+						{/* <Nav.Link as={Link} to="/contact">Contact</Nav.Link> */}
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
