@@ -1,7 +1,14 @@
 import Masthead from "../../components/Masthead";
+
+import { Redirect } from "react-router-dom";
+
 import Auth from '../../utils/auth';
 
 function Admin() {
+	if (!Auth.loggedIn()) {
+		return <Redirect to="/login" />;
+	}
+
 	return (
 		<>
 			<Masthead title="Admin" />
