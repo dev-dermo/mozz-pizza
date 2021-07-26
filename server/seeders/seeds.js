@@ -1,11 +1,10 @@
 require('dotenv').config();
 
 const db = require('../config/connection');
-const { User } = require('../models');
+const { User, Category, Product } = require('../models');
 
 db.once('open', async () => {
   await User.deleteMany({});
-
 	await User.create({
 		name: process.env.NAME,
 		email: process.env.EMAIL,
@@ -13,6 +12,30 @@ db.once('open', async () => {
 		isPartner: false,
 		isAdmin: true,
 	});
+
+  // const categories = [
+  //   { name: 'Classic Pizzas' },
+  //   { name: 'Gourmet Pizzas' },
+  //   { name: 'Sides' },
+  //   { name: 'Drinks' },
+  // ];
+
+  // // Category.deleteMany({});
+  // Category.insertMany(categories);
+
+  // const products = [
+  //   {
+  //     name: 'Test name',
+  //     description: 'test desc',
+  //     allergens: '123123',
+  //     price: 12341234,
+  //     category: '60e9dc65f009853eea6c9ef6',
+  //     isActive: true,
+  //   }
+  // ];
+
+  // Product.deleteMany({});
+  // await Product.insertMany(products);
 
   // create user data
   // const userData = [];
