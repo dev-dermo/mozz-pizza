@@ -45,7 +45,7 @@ function App() {
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/contact" component={Contact} />
             
-            <Route exact path="/admin" component={Admin} />
+            {/* <Route exact path="/admin" component={Admin} /> */}
             <Route exact path="/login" component={Login} />
             
             <Route path="*" render={() => {
