@@ -19,6 +19,7 @@ function Admin() {
 				<div>
 					<h2>Hello {name}</h2>
 					<Link className="btn btn-primary" to="/admin/add-categories">Add Categories</Link>
+					<Link className="btn btn-primary" to="/admin/add-products">Add Products</Link>
 				</div>
 			) : <h2>Not logged in</h2>}
 		</>
