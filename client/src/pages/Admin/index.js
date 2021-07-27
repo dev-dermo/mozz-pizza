@@ -13,7 +13,7 @@ function Admin() {
 
 	return (
 		<>
-			<Masthead title="Administrator Dashboard" />
+			<Masthead title="Admin Dashboard" />
 
 			{Auth.loggedIn() && Auth.isAdmin() ? (
 				<div>

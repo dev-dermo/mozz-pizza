@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 
 import Masthead from '../../components/Masthead';
+import AddCategoryForm from '../../components/AddCategoryForm';
 
 import Auth from '../../utils/auth';
 
@@ -23,14 +24,20 @@ function AddCategories() {
 		<>
 		<Masthead title="Add Categories" />
 
-		<div>
-			<h2>Current Categories</h2>
+		<div className="row">
+			<div className="col-12">
+				<h2>Current Categories</h2>
+			</div>
 			{categories.map(category => {
 				return (
-					<p data-id={category._id} key={category._id}>{category.name}</p>
+					<div className="col-sm-4">
+						<p className="alert alert-secondary" data-id={category._id} key={category._id}>{category.name}</p>
+					</div>
 				);
 			})}
 		</div>
+
+		<AddCategoryForm />
 		</>
 	);
 }

@@ -35,7 +35,7 @@ function Header() {
 						{Auth.loggedIn() ? (
 							<>
 							<Nav.Link as={Link} to="/admin">Dashboard</Nav.Link>
-							<Nav.Link onClick={logout} as={Link}>Logout</Nav.Link>
+							<Nav.Link onClick={logout} as={Link} to="/">Logout</Nav.Link>
 							{/* <a className="nav-link" onClick={logout} href="/">Logout</a> */}
 							</>
 						) : null}
