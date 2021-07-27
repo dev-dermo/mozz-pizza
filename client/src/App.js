@@ -2,6 +2,7 @@ import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import AddCategories from './pages/AddCategories';
 import Login from './pages/Login';
 
 import Header from './components/Header';
@@ -46,6 +47,8 @@ function App() {
             <Route exact path="/contact" component={Contact} />
             
             <Route exact path="/admin" component={Admin} />
+            <Route exact path="/admin/add-categories" component={AddCategories} />
+
             <Route exact path="/login" component={Login} />
             
             <Route path="*" render={() => {
