@@ -1,4 +1,3 @@
-import { Redirect } from 'react-router-dom';
 import { useState } from 'react';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
