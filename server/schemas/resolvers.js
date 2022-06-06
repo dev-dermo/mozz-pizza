@@ -42,6 +42,14 @@ const resolvers = {
 			return product;
 		},
 
+		deleteProduct: async (parent, { productId }) => {
+			const deleted = await Product.deleteOne({ _id: productId });
+
+			console.log(deleted);
+
+			return deleted;
+		},
+
 		// TODO: keep behind auth
 		addCategory: async(parent, { name }) => {
 			const category = await Category.create({ name });

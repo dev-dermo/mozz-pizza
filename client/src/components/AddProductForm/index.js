@@ -43,13 +43,13 @@ function AddProductForm() {
 			console.error(e);
 		}
 
-		setFormState({
-			"name": "",
-			"description": "",
-			"allergens": "",
-			"price": "",
-			"categoryId": ""
-		});
+		// setFormState({
+		// 	"name": "",
+		// 	"description": "",
+		// 	"allergens": "",
+		// 	"price": "",
+		// 	"categoryId": ""
+		// });
 	};
 
 	if (loading) {
@@ -126,13 +126,14 @@ function AddProductForm() {
 							onChange={handleChange}
 							id="categoryId"
 							name="categoryId"
-							value={formState.category}
 							className="form-control"
 							required
 						>
+							<option>Select One</option>
 							{categories.map(category => {
 								return (
 									<option
+										key={category._id}
 										value={category._id}
 									>
 										{category.name}

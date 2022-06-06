@@ -37,6 +37,12 @@ const typeDefs = gql`
 		isActive: Boolean
 	}
 
+	type Deleted {
+		n: Int
+		ok: Int
+		deletedCount: Int
+	}
+
 	type Query {
 		categories: [Category]
 		products: [Product]
@@ -45,6 +51,7 @@ const typeDefs = gql`
 	type Mutation {
 		addUser(name: String!, email: String!, password: String!, companyName: String, isAdmin: Boolean, isPartner: Boolean): Auth
 		addProduct(name: String!, description: String, allergens: String, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
+		deleteProduct(productId: ID!) : Deleted
 		addCategory(name: String!): Category
 		addSubCategory(name: String!): SubCategory
 		login(email: String!, password: String!): Auth

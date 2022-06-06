@@ -30,7 +30,7 @@ function AddCategories() {
 			</div>
 			{categories.map(category => {
 				return (
-					<div className="col-sm-4">
+					<div key={category._id} className="col-sm-4">
 						<p className="alert alert-secondary" data-id={category._id} key={category._id}>{category.name}</p>
 					</div>
 				);
