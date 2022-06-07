@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../../utils/mutations';
-import { QUERY_CATEGORIES } from '../../utils/queries';
 
-function AddProductForm() {
+function AddProductForm({ categories }) {
 	const [formState, setFormState] = useState({
 		"name": "",
 		"description": "",
@@ -11,11 +10,11 @@ function AddProductForm() {
 		"price": "",
 		"categoryId": ""
 	});
-	const { loading, data } = useQuery(QUERY_CATEGORIES);
+	
 	const [addProduct, { error }] = useMutation(ADD_PRODUCT);
 
-	const categories = data?.categories || [];
-	console.log('categories', categories);
+	// const categories = data?.categories || [];
+	// console.log('categories', categories);
 
 	const handleChange = event => {
 		let { name, value } = event.target;
@@ -52,9 +51,9 @@ function AddProductForm() {
 		// });
 	};
 
-	if (loading) {
-		return (<p>Loading...</p>);
-	}
+	// if (loading) {
+	// 	return (<p>Loading...</p>);
+	// }
 
 	return (
 		<div className="row">

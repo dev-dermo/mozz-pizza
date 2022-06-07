@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { Redirect } from 'react-router-dom';
-import { QUERY_PRODUCTS } from '../../utils/queries';
+import { QUERY_PRODUCTS, QUERY_CATEGORIES } from '../../utils/queries';
 import { DELETE_PRODUCT, TOGGLE_PRODUCT } from '../../utils/mutations';
 
 import Masthead from '../../components/Masthead';
@@ -9,9 +9,14 @@ import AddProductForm from '../../components/AddProductForm';
 import Auth from '../../utils/auth';
 
 function AddProducts() {
-	const { loading, data } = useQuery(QUERY_PRODUCTS);
+	const { loading: loadingProducts, data: productsData } = useQuery(QUERY_PRODUCTS);
+	const { loading: loadingCategories, data: categoryData } = useQuery(QUERY_CATEGORIES);
 	const [deleteProduct] = useMutation(DELETE_PRODUCT);
 	const [toggleProduct] = useMutation(TOGGLE_PRODUCT);
+
+	const products = productsData?.products || [];
+	const categories = categoryData?.categories || [];
+	console.log(products);
 
 	const handleToggleActive = async event => {
 		const { id, action } = event.target.dataset;
@@ -58,15 +63,16 @@ function AddProducts() {
 		}
 	};
 
-	const products = data?.products || [];
-	console.log(products);
-
 	if (!Auth.loggedIn()) {
 		return <Redirect to="/login" />;
 	}
 
-	if (loading) {
+	if (loadingProducts) {
 		return <div>Loading...</div>
+	}
+
+	if (!loadingCategories && categories.length === 0) {
+		return <div className='alert alert-warning'>Add a category first.</div>
 	}
 
 	return (
@@ -135,7 +141,7 @@ function AddProducts() {
 				})}
 			</div>
 
-			<AddProductForm />
+			<AddProductForm categories={categories} />
 		</>
 	);
 }
