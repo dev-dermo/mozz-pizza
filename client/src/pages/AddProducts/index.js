@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { Redirect } from 'react-router-dom';
 import { QUERY_PRODUCTS } from '../../utils/queries';
-import { DELETE_PRODUCT } from '../../utils/mutations';
+import { DELETE_PRODUCT, TOGGLE_PRODUCT } from '../../utils/mutations';
 
 import Masthead from '../../components/Masthead';
 import AddProductForm from '../../components/AddProductForm';
@@ -11,6 +11,33 @@ import Auth from '../../utils/auth';
 function AddProducts() {
 	const { loading, data } = useQuery(QUERY_PRODUCTS);
 	const [deleteProduct] = useMutation(DELETE_PRODUCT);
+	const [toggleProduct] = useMutation(TOGGLE_PRODUCT);
+
+	const handleToggleActive = async event => {
+		const { id, action } = event.target.dataset;
+		let status;
+
+		if (action === 'activate') {
+			status = true;
+		} else {
+			status = false;
+		}
+
+		try {
+			const response = await toggleProduct({
+				variables: {
+					productId: id,
+					status,
+				},
+			});
+
+			console.log(response);
+
+			window.location.reload();
+		} catch (error) {
+			console.error(error);
+		}
+	};
 
 	const handleDeleteProduct = async event => {
 		const productId = event.target.id;
@@ -71,17 +98,35 @@ function AddProducts() {
 												})}
 											</ul>
 										) : ''}
-										{/* <button className='btn btn-primary'>
-										Enable
-									</button> */}
 
+										{product.isActive ? (
+											<button
+												data-id={product._id}
+												data-action="deactivate"
+												className='btn btn-warning mr-2 mt-2'
+												onClick={handleToggleActive}
+											>
+												Deactivate
+											</button>
+										) : (
+											<button
+												data-id={product._id}
+												data-action="activate"
+												className='btn btn-success mr-2 mt-2'
+												onClick={handleToggleActive}
+											>
+												Activate
+											</button>
+										)}
+										
 										<button
 											id={product._id}
-											className='btn btn-danger'
+											className='btn btn-danger mr-2 mt-2'
 											onClick={handleDeleteProduct}
 										>
 											Delete
 										</button>
+										
 									</p>
 								</div>
 							</div>

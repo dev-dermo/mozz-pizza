@@ -145,7 +145,7 @@ function AddProductForm() {
 					<button type="submit" className="btn btn-primary">Add Product</button>
 				</form>
 
-				{error && <div>Add Category failed</div>}
+				{error && <div>Add Product failed</div>}
 			</div>
 		</div>
 	);

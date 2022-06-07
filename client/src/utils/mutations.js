@@ -47,6 +47,15 @@ export const ADD_PRODUCT = gql`
 	}
 `;
 
+export const TOGGLE_PRODUCT = gql`
+	mutation toggleProduct($productId: ID!, $status: Boolean) {
+		toggleProduct(productId: $productId, status: $status) {
+			_id
+			isActive
+		}
+	}
+`;
+
 export const DELETE_PRODUCT = gql`
 	mutation deleteProduct($productId: ID!) {
 		deleteProduct(productId: $productId) {

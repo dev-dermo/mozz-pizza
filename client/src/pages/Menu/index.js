@@ -5,14 +5,14 @@ import { useQuery } from '@apollo/client';
 import ProductList from '../../components/ProductList';
 import Masthead from '../../components/Masthead';
 
-import { QUERY_PRODUCTS } from '../../utils/queries';
+import { QUERY_ACTIVE_PRODUCTS } from '../../utils/queries';
 
 function Menu() {
 	document.title = 'Mozz Pizza Menu | Neopolitan Pizza Kitchen, Glengarriff, West Cork';
 
-	const { loading, data } = useQuery(QUERY_PRODUCTS);
+	const { loading, data } = useQuery(QUERY_ACTIVE_PRODUCTS);
 
-	const products = data?.products || [];
+	const products = data?.activeProducts || [];
 	const categories = [];
 
 	console.log(products);

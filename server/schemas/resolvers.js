@@ -10,6 +10,16 @@ const resolvers = {
 			return categories;
 		},
 
+		activeProducts: async () => {
+			const products = await Product.find({ isActive: true })
+				.populate('category')
+				.populate('subCategories');
+			
+			console.log(products);
+
+			return products;
+		},
+
 		products: async () => {
 			const products = await Product.find({})
 				.populate('category')
@@ -38,6 +48,16 @@ const resolvers = {
 				category: categoryId,
 				subCategories: subCategories,
 			});
+
+			return product;
+		},
+
+		toggleProduct: async(parent, { productId, status }) => {
+			const product = await Product.findByIdAndUpdate(productId, {
+				isActive: status
+			}, { new: true });
+
+			console.log(product);
 
 			return product;
 		},

@@ -22,6 +22,28 @@ export const QUERY_PRODUCTS = gql`
 	}
 `;
 
+export const QUERY_ACTIVE_PRODUCTS = gql`
+	query activeProducts {
+		activeProducts {
+			_id
+			name
+			price
+			description
+			allergens
+			isActive
+			imageUrl
+			category {
+				_id
+				name
+			}
+			subCategories {
+				_id
+				name
+			}
+		}
+	}
+`;
+
 export const QUERY_CATEGORIES = gql`
 	query categories {
 		categories {

@@ -46,11 +46,13 @@ const typeDefs = gql`
 	type Query {
 		categories: [Category]
 		products: [Product]
+		activeProducts: [Product]
 	}
 
 	type Mutation {
 		addUser(name: String!, email: String!, password: String!, companyName: String, isAdmin: Boolean, isPartner: Boolean): Auth
 		addProduct(name: String!, description: String, allergens: String, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
+		toggleProduct(productId: ID!, status: Boolean) : Product
 		deleteProduct(productId: ID!) : Deleted
 		addCategory(name: String!): Category
 		deleteCategory(categoryId: ID!): Deleted
