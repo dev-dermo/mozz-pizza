@@ -34,7 +34,8 @@ function Header() {
 						<Nav.Link as={Link} to="/menu">Menu</Nav.Link>
 						{Auth.loggedIn() ? (
 							<>
-							<Nav.Link as={Link} to="/admin">Dashboard</Nav.Link>
+							<Nav.Link as={Link} to="/admin/add-categories">Categories</Nav.Link>
+							<Nav.Link as={Link} to="/admin/add-products">Products</Nav.Link>
 							<Nav.Link onClick={logout} as={Link} to="/">Logout</Nav.Link>
 							{/* <a className="nav-link" onClick={logout} href="/">Logout</a> */}
 							</>

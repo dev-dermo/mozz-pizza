@@ -57,6 +57,15 @@ const resolvers = {
 			return category;
 		},
 
+		deleteCategory: async (parent, { categoryId }) => {
+			const deletedCategory = await Category.deleteOne({ _id: categoryId });
+			console.log(deletedCategory);
+
+			const deletedProducts = await Product.deleteMany({ category: categoryId });
+
+			return deletedCategory;
+		},
+
 		// TODO: keep behind auth
 		addSubCategory: async(parent, { name }) => {
 			const subCategory = await SubCategory.create({ name });

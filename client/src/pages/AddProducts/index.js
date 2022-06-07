@@ -44,7 +44,7 @@ function AddProducts() {
 
 	return (
 		<>
-			<Masthead title="Add Products" />
+			<Masthead title="Products" />
 
 			<div className="row">
 				<div className="col-12">

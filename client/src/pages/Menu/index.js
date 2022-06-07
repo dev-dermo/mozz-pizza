@@ -15,6 +15,8 @@ function Menu() {
 	const products = data?.products || [];
 	const categories = [];
 
+	console.log(products);
+
 	products.forEach(product => {
 		if (!categories.includes(product.category.name)) categories.push(product.category.name);
 	});

@@ -10,7 +10,18 @@ function ProductList({ products, category }) {
 						<p className="text-right float-right">
 							<em>€{(product.price / 100).toFixed(2)}</em>
 						</p>
-						<h3>{product.name}<sub><small>({product.allergens})</small></sub></h3>
+						<h3>
+							{product.name}
+
+							{product.allergens ? (
+								<sub>
+									<small>
+										({product.allergens})
+									</small>
+								</sub>
+							) : ''}
+							
+						</h3>
 						<p className="lead"><em>{product.description}</em></p>
 					</div>
 				);

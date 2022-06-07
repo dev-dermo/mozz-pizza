@@ -20,6 +20,14 @@ export const ADD_CATEGORY = gql`
 	}
 `;
 
+export const DELETE_CATEGORY = gql`
+	mutation deleteCategory($categoryId: ID!) {
+		deleteCategory(categoryId: $categoryId) {
+			ok
+		}
+	}
+`;
+
 export const ADD_PRODUCT = gql`
 	mutation addProduct($name: String!, $allergens: String, $description: String, $price: Int!, $imageUrl: String, $categoryId: ID!, $subCategories: [ID]){
 		addProduct(name: $name, allergens: $allergens, description: $description, price: $price, imageUrl: $imageUrl, categoryId: $categoryId, subCategories: $subCategories) {

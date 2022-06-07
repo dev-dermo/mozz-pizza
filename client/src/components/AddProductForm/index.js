@@ -102,7 +102,6 @@ function AddProductForm() {
 							className="form-control"
 							type="text"
 							placeholder="Allergens, eg. 1, 3, 4"
-							required
 						/>
 					</div>
 
