@@ -18,6 +18,7 @@ const typeDefs = gql`
 	type Category {
 		_id: ID
 		name: String
+		priority: Int
 	}
 
 	type SubCategory {
@@ -54,7 +55,8 @@ const typeDefs = gql`
 		addProduct(name: String!, description: String, allergens: String, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
 		toggleProduct(productId: ID!, status: Boolean) : Product
 		deleteProduct(productId: ID!) : Deleted
-		addCategory(name: String!): Category
+		addCategory(name: String!, priority: Int): Category
+		updateCategory(categoryId: ID!, name: String, priority: Int): Category
 		deleteCategory(categoryId: ID!): Deleted
 		addSubCategory(name: String!): SubCategory
 		login(email: String!, password: String!): Auth

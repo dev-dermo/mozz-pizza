@@ -6,6 +6,10 @@ const categorySchema = new Schema({
 		required: true,
 		unique: true,
 	},
+	priority: {
+		type: Number,
+		default: 0,
+	}
 }, { timestamps: true });
 
 const Category = model('Category', categorySchema);

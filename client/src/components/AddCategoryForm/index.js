@@ -3,11 +3,15 @@ import { useMutation } from '@apollo/client';
 import { ADD_CATEGORY } from '../../utils/mutations';
 
 function AddCategoryForm() {
-	const [formState, setFormState] = useState({ name: '' });
+	const [formState, setFormState] = useState({ name: '', priority: 0 });
 	const [addCategory, { error }] = useMutation(ADD_CATEGORY);
 
 	const handleChange = event => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+
+		if (name === 'priority') {
+			value = parseInt(value);
+		}
 
     setFormState({
       ...formState,
@@ -23,12 +27,12 @@ function AddCategoryForm() {
         variables: { ...formState }
       });
       console.log(data);
+
+			setFormState({ name: '' });
+			window.location.assign('/admin/add-categories');
     } catch (e) {
       console.error(e);
     }
-
-		setFormState({ name: '' });
-		window.location.assign('/admin/add-categories');
 	};
 
 	return (
@@ -47,6 +51,14 @@ function AddCategoryForm() {
 							placeholder="Category Name"
 							id="category-name"
 							name="name"
+						/>
+						<input
+							onChange={handleChange}
+							className="form-control"
+							placeholder="Category Order"
+							id="category-priority"
+							name="priority"
+							type="number"
 						/>
 						<div className="input-group-append">
 							<button className="btn btn-outline-primary" type="submit">Add Category</button>

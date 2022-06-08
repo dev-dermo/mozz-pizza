@@ -97,6 +97,7 @@ function AddProducts() {
 										<strong>Allergens:</strong> {product.allergens}<br />
 										<strong>Active:</strong> {(product.isActive).toString()}<br />
 										<strong>Category:</strong> {product.category.name}<br />
+										<strong>Category Priority:</strong> {product.category.priority}<br />
 										{product.subCategories.length > 0 ? (
 											<ul>
 												{product.subCategories.map(subCategory => {

@@ -12,10 +12,21 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_CATEGORY = gql`
-	mutation addCategory($name: String!) {
-		addCategory(name: $name) {
+	mutation addCategory($name: String!, $priority: Int) {
+		addCategory(name: $name, priority: $priority) {
 			_id
 			name
+			priority
+		}
+	}
+`;
+
+export const UPDATE_CATEGORY = gql`
+	mutation updateCategory($categoryId: ID!, $name: String, $priority: Int) {
+		updateCategory(categoryId: $categoryId, name: $name, priority: $priority) {
+			_id
+			name
+			priority
 		}
 	}
 `;

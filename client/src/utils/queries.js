@@ -13,6 +13,7 @@ export const QUERY_PRODUCTS = gql`
 			category {
 				_id
 				name
+				priority
 			}
 			subCategories {
 				_id
@@ -35,6 +36,7 @@ export const QUERY_ACTIVE_PRODUCTS = gql`
 			category {
 				_id
 				name
+				priority
 			}
 			subCategories {
 				_id
@@ -49,6 +51,7 @@ export const QUERY_CATEGORIES = gql`
 		categories {
 			_id
 			name
+			priority
 		}
 	}
 `;

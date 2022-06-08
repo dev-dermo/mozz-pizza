@@ -5,7 +5,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
 	Query: {
 		categories: async () => {
-			const categories = Category.find({});
+			const categories = Category.find({}).sort({ priority: 1 });
 
 			return categories;
 		},
@@ -71,8 +71,18 @@ const resolvers = {
 		},
 
 		// TODO: keep behind auth
-		addCategory: async(parent, { name }) => {
-			const category = await Category.create({ name });
+		addCategory: async(parent, { name, priority }) => {
+			const category = await Category.create({ name, priority });
+
+			console.log(category);
+
+			return category;
+		},
+
+		updateCategory: async(parent, { categoryId, name, priority }) => {
+			const category = await Category.findOneAndUpdate({ _id: categoryId }, { name, priority }, { new: true });
+
+			console.log(category);
 
 			return category;
 		},

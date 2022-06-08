@@ -13,9 +13,6 @@ function AddProductForm({ categories }) {
 	
 	const [addProduct, { error }] = useMutation(ADD_PRODUCT);
 
-	// const categories = data?.categories || [];
-	// console.log('categories', categories);
-
 	const handleChange = event => {
 		let { name, value } = event.target;
 
@@ -41,19 +38,7 @@ function AddProductForm({ categories }) {
 		} catch (e) {
 			console.error(e);
 		}
-
-		// setFormState({
-		// 	"name": "",
-		// 	"description": "",
-		// 	"allergens": "",
-		// 	"price": "",
-		// 	"categoryId": ""
-		// });
 	};
-
-	// if (loading) {
-	// 	return (<p>Loading...</p>);
-	// }
 
 	return (
 		<div className="row">
