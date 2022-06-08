@@ -112,8 +112,9 @@ function AddProductForm({ categories }) {
 							className="form-control"
 							required
 						>
-							<option>Select One</option>
+							<option value="">Select One</option>
 							{categories.map(category => {
+								<option value=""></option>
 								return (
 									<option
 										key={category._id}

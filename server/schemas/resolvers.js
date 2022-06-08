@@ -13,7 +13,8 @@ const resolvers = {
 		activeProducts: async () => {
 			const products = await Product.find({ isActive: true })
 				.populate('category')
-				.populate('subCategories');
+				.populate('subCategories')
+				.sort({ createdAt: -1 });
 			
 			console.log(products);
 
@@ -23,8 +24,9 @@ const resolvers = {
 		products: async () => {
 			const products = await Product.find({})
 				.populate('category')
-				.populate('subCategories');
-
+				.populate('subCategories')
+				.sort({ createdAt: -1 });
+				
 			return products;
 		},
 	},
