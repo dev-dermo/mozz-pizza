@@ -67,6 +67,22 @@ export const TOGGLE_PRODUCT = gql`
 	}
 `;
 
+export const EDIT_PRODUCT = gql`
+	mutation editProduct($productId: ID!, $name: String, $description: String, $allergens: String, $price: Int, $category: ID) {
+		editProduct(productId: $productId, name: $name, price: $price, allergens: $allergens, description: $description, category: $category) {
+			_id
+			name
+			description
+			allergens
+			price
+			category {
+				_id
+				name
+			}
+		}
+	}
+`;
+
 export const DELETE_PRODUCT = gql`
 	mutation deleteProduct($productId: ID!) {
 		deleteProduct(productId: $productId) {

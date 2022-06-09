@@ -15,10 +15,16 @@ const resolvers = {
 				.populate('category')
 				.populate('subCategories')
 				.sort({ createdAt: -1 });
-			
-			console.log(products);
 
 			return products;
+		},
+
+		product: async (parent, { productId }) => {
+			const product = await Product.findOne({ _id: productId })
+			.populate('category')
+			.populate('subCategories');
+
+			return product;
 		},
 
 		products: async () => {
@@ -59,6 +65,15 @@ const resolvers = {
 				isActive: status
 			}, { new: true });
 
+			return product;
+		},
+
+		editProduct: async (parent, args) => {
+			console.log(args);
+			const product = await Product.findByIdAndUpdate(args.productId, { ...args }, { new: true })
+				.populate('category')
+				.populate('subCategories');
+			
 			console.log(product);
 
 			return product;
@@ -67,8 +82,6 @@ const resolvers = {
 		deleteProduct: async (parent, { productId }) => {
 			const deleted = await Product.deleteOne({ _id: productId });
 
-			console.log(deleted);
-
 			return deleted;
 		},
 
@@ -76,15 +89,11 @@ const resolvers = {
 		addCategory: async(parent, { name, priority }) => {
 			const category = await Category.create({ name, priority });
 
-			console.log(category);
-
 			return category;
 		},
 
 		updateCategory: async(parent, { categoryId, name, priority }) => {
 			const category = await Category.findOneAndUpdate({ _id: categoryId }, { name, priority }, { new: true });
-
-			console.log(category);
 
 			return category;
 		},

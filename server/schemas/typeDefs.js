@@ -46,6 +46,7 @@ const typeDefs = gql`
 
 	type Query {
 		categories: [Category]
+		product(productId: ID!): Product
 		products: [Product]
 		activeProducts: [Product]
 	}
@@ -54,6 +55,7 @@ const typeDefs = gql`
 		addUser(name: String!, email: String!, password: String!, companyName: String, isAdmin: Boolean, isPartner: Boolean): Auth
 		addProduct(name: String!, description: String, allergens: String, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
 		toggleProduct(productId: ID!, status: Boolean) : Product
+		editProduct(productId: ID!, name: String, description: String, allergens: String, price: Int, category: ID): Product
 		deleteProduct(productId: ID!) : Deleted
 		addCategory(name: String!, priority: Int): Category
 		updateCategory(categoryId: ID!, name: String, priority: Int): Category

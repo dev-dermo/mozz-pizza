@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 
 import ProductList from '../../components/ProductList';
 import Masthead from '../../components/Masthead';
+import CallToAction from '../../components/CallToAction';
 
 import { QUERY_ACTIVE_PRODUCTS, QUERY_CATEGORIES } from '../../utils/queries';
 
@@ -36,6 +37,8 @@ function Menu() {
 			<small>
 				<em><strong>Allergens:</strong> 1 Gluten, 2 Dairy, 3 Egg, 4 Nuts</em>
 			</small>
+
+			<CallToAction />
 		</>
 		
 	);

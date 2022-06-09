@@ -1,17 +1,44 @@
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_PRODUCT } from '../../utils/mutations';
+import { Redirect, useLocation } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
+import { EDIT_PRODUCT } from '../../utils/mutations';
 
-function AddProductForm({ categories }) {
+import Auth from '../../utils/auth';
+
+import { QUERY_CATEGORIES } from '../../utils/queries';
+
+function EditProduct() {
+	const { data, loading, error } = useQuery(QUERY_CATEGORIES);
+	const [editProduct] = useMutation(EDIT_PRODUCT);
+	const categories = data?.categories || [];
+
+	const product = useLocation().product;
+	if (!product) {
+		window.location.replace('/admin/add-products');
+	}
+
 	const [formState, setFormState] = useState({
-		"name": "",
-		"description": "",
-		"allergens": "",
-		"price": "",
-		"categoryId": ""
+		"productId": product._id,
+		"name": product.name,
+		"description": product.description,
+		"allergens": product.allergens,
+		"price": product.price,
+		"category": product.category._id,
 	});
-	
-	const [addProduct, { error }] = useMutation(ADD_PRODUCT);
+
+	const handleFormSubmit = async (event) => {
+		event.preventDefault();
+
+		try {
+			const { data } = await editProduct({
+				variables: { ...formState }
+			});
+			console.log(data);
+			window.location.assign('/admin/add-products');
+		} catch (e) {
+			console.error(e);
+		}
+	};
 
 	const handleChange = event => {
 		let { name, value } = event.target;
@@ -26,24 +53,18 @@ function AddProductForm({ categories }) {
 		});
 	};
 
-	const handleFormSubmit = async (event) => {
-		event.preventDefault();
+	if (!Auth.loggedIn()) {
+		return <Redirect to="/login" />;
+	}
 
-		try {
-			const { data } = await addProduct({
-				variables: { ...formState }
-			});
-			console.log(data);
-			window.location.assign('/admin/add-products');
-		} catch (e) {
-			console.error(e);
-		}
-	};
+	if (loading) {
+		return <div>Loading...</div>
+	}
 
 	return (
 		<div className="row">
 			<div className="col-12">
-				<h2>Add a new product</h2>
+				<h2>Edit: {product.name}</h2>
 			</div>
 
 			<div className="col">
@@ -107,12 +128,12 @@ function AddProductForm({ categories }) {
 						<label htmlFor="category">Category</label>
 						<select
 							onChange={handleChange}
-							id="categoryId"
-							name="categoryId"
+							id="category"
+							name="category"
 							className="form-control"
 							required
 						>
-							<option value="">Select One</option>
+							<option value={product.category._id}>Current ({product.category.name})</option>
 							{categories.map(category => {
 								return (
 									<option
@@ -126,13 +147,13 @@ function AddProductForm({ categories }) {
 						</select>
 					</div>
 
-					<button type="submit" className="btn btn-primary">Add Product</button>
+					<button type="submit" className="btn btn-primary">Update Product</button>
 				</form>
 
-				{error && <div>Add Product failed</div>}
+				{error && <div>Edit Product failed</div>}
 			</div>
 		</div>
 	);
 }
 
-export default AddProductForm;
+export default EditProduct;

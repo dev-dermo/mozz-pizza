@@ -6,6 +6,8 @@ import { DELETE_PRODUCT, TOGGLE_PRODUCT } from '../../utils/mutations';
 import Masthead from '../../components/Masthead';
 import AddProductForm from '../../components/AddProductForm';
 
+import { Link } from 'react-router-dom';
+
 import Auth from '../../utils/auth';
 
 function AddProducts() {
@@ -125,6 +127,19 @@ function AddProducts() {
 												Activate
 											</button>
 										)}
+
+										<Link
+											id={product._id}
+											className='btn btn-dark mr-2 mt-2'
+											// to={'/admin/edit-product/' + product._id}
+											to={{
+												pathname: '/admin/edit-product/',
+												product
+											}}
+											// onClick={handleDeleteProduct}
+										>
+											Edit
+										</Link>
 										
 										<button
 											id={product._id}
