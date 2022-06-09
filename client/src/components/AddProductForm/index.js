@@ -9,7 +9,7 @@ function AddProductForm({ categories }) {
 		"allergens": "",
 		"price": "",
 		"categoryId": "",
-		"priority": "",
+		"priority": 0,
 	});
 	
 	const [addProduct, { error }] = useMutation(ADD_PRODUCT);
@@ -116,7 +116,6 @@ function AddProductForm({ categories }) {
 							className="form-control"
 							type="number"
 							placeholder="0"
-							required
 						/>
 					</div>
 

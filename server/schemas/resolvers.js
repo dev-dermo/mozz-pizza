@@ -98,8 +98,6 @@ const resolvers = {
 
 		deleteCategory: async (parent, { categoryId }) => {
 			const deletedCategory = await Category.deleteOne({ _id: categoryId });
-			console.log(deletedCategory);
-
 			const deletedProducts = await Product.deleteMany({ category: categoryId });
 
 			return deletedCategory;
