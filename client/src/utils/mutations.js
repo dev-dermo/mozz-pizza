@@ -40,8 +40,8 @@ export const DELETE_CATEGORY = gql`
 `;
 
 export const ADD_PRODUCT = gql`
-	mutation addProduct($name: String!, $allergens: String, $description: String, $price: Int!, $imageUrl: String, $categoryId: ID!, $subCategories: [ID]){
-		addProduct(name: $name, allergens: $allergens, description: $description, price: $price, imageUrl: $imageUrl, categoryId: $categoryId, subCategories: $subCategories) {
+	mutation addProduct($name: String!, $allergens: String, $description: String, $price: Int!, $imageUrl: String, $categoryId: ID!, $subCategories: [ID], $priority: Int) {
+		addProduct(name: $name, allergens: $allergens, description: $description, price: $price, imageUrl: $imageUrl, categoryId: $categoryId, subCategories: $subCategories, priority: $priority) {
 			_id
 			name
 			description
@@ -68,13 +68,14 @@ export const TOGGLE_PRODUCT = gql`
 `;
 
 export const EDIT_PRODUCT = gql`
-	mutation editProduct($productId: ID!, $name: String, $description: String, $allergens: String, $price: Int, $category: ID) {
-		editProduct(productId: $productId, name: $name, price: $price, allergens: $allergens, description: $description, category: $category) {
+	mutation editProduct($productId: ID!, $name: String, $description: String, $allergens: String, $price: Int, $category: ID, $priority: Int) {
+		editProduct(productId: $productId, name: $name, price: $price, allergens: $allergens, description: $description, category: $category, priority: $priority) {
 			_id
 			name
 			description
 			allergens
 			price
+			priority
 			category {
 				_id
 				name

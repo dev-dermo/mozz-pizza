@@ -14,7 +14,7 @@ const resolvers = {
 			const products = await Product.find({ isActive: true })
 				.populate('category')
 				.populate('subCategories')
-				.sort({ createdAt: -1 });
+				.sort({ priority: 1 });
 
 			return products;
 		},
@@ -46,13 +46,14 @@ const resolvers = {
 		},
 
 		// TODO: keep behind auth
-		addProduct: async(parent, { name, description, allergens, price, imageUrl, categoryId, subCategories }) => {
+		addProduct: async(parent, { name, description, allergens, price, imageUrl, categoryId, subCategories, priority }) => {
 			const product = await Product.create({
 				name,
 				description,
 				allergens,
 				price,
 				imageUrl,
+				priority,
 				category: categoryId,
 				subCategories: subCategories,
 			});
@@ -69,12 +70,9 @@ const resolvers = {
 		},
 
 		editProduct: async (parent, args) => {
-			console.log(args);
 			const product = await Product.findByIdAndUpdate(args.productId, { ...args }, { new: true })
 				.populate('category')
 				.populate('subCategories');
-			
-			console.log(product);
 
 			return product;
 		},

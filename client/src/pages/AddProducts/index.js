@@ -99,7 +99,8 @@ function AddProducts() {
 										<strong>Allergens:</strong> {product.allergens}<br />
 										<strong>Active:</strong> {(product.isActive).toString()}<br />
 										<strong>Category:</strong> {product.category.name}<br />
-										<strong>Category Priority:</strong> {product.category.priority}<br />
+										<strong>Product Priority:</strong> {product.priority}<br />
+										{/* <strong>Category Priority:</strong> {product.category.priority}<br /> */}
 										{product.subCategories.length > 0 ? (
 											<ul>
 												{product.subCategories.map(subCategory => {
@@ -115,7 +116,7 @@ function AddProducts() {
 												className='btn btn-warning mr-2 mt-2'
 												onClick={handleToggleActive}
 											>
-												Deactivate
+												Disable
 											</button>
 										) : (
 											<button
@@ -124,7 +125,7 @@ function AddProducts() {
 												className='btn btn-success mr-2 mt-2'
 												onClick={handleToggleActive}
 											>
-												Activate
+												Enable
 											</button>
 										)}
 

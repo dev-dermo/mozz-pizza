@@ -55,7 +55,7 @@ function AddCategoryForm() {
 						<input
 							onChange={handleChange}
 							className="form-control"
-							placeholder="Category Order"
+							placeholder="Category Order (Optional)"
 							id="category-priority"
 							name="priority"
 							type="number"

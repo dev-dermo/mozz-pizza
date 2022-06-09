@@ -9,7 +9,7 @@ const categorySchema = new Schema({
 	priority: {
 		type: Number,
 		default: 0,
-	}
+	},
 }, { timestamps: true });
 
 const Category = model('Category', categorySchema);

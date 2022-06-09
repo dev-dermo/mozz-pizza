@@ -9,6 +9,7 @@ export const QUERY_PRODUCT = gql`
 			allergens
 			price
 			isActive
+			priority
 			category {
 				_id
 				name
@@ -27,6 +28,7 @@ export const QUERY_PRODUCTS = gql`
 			allergens
 			isActive
 			imageUrl
+			priority
 			category {
 				_id
 				name
@@ -50,6 +52,7 @@ export const QUERY_ACTIVE_PRODUCTS = gql`
 			allergens
 			isActive
 			imageUrl
+			priority
 			category {
 				_id
 				name

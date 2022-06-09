@@ -24,6 +24,10 @@ const productSchema = new Schema({
 		ref: 'Category',
 		required: true,
 	},
+	priority: {
+		type: Number,
+		default: 0,
+	},
 	subCategories: [{
 		type: Schema.Types.ObjectId, // TODO make this an array, with sub document
 		ref: 'SubCategory',

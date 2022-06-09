@@ -8,7 +8,8 @@ function AddProductForm({ categories }) {
 		"description": "",
 		"allergens": "",
 		"price": "",
-		"categoryId": ""
+		"categoryId": "",
+		"priority": "",
 	});
 	
 	const [addProduct, { error }] = useMutation(ADD_PRODUCT);
@@ -17,6 +18,8 @@ function AddProductForm({ categories }) {
 		let { name, value } = event.target;
 
 		if (name === 'price') {
+			value = parseInt(value);
+		} else if (name === 'priority') {
 			value = parseInt(value);
 		}
 
@@ -99,6 +102,20 @@ function AddProductForm({ categories }) {
 							className="form-control"
 							type="number"
 							placeholder="1350"
+							required
+						/>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="priority">Priority</label>
+						<input
+							onChange={handleChange}
+							id="priority"
+							name="priority"
+							value={formState.priority}
+							className="form-control"
+							type="number"
+							placeholder="0"
 							required
 						/>
 					</div>

@@ -33,6 +33,7 @@ const typeDefs = gql`
 		allergens: String
 		price: Int
 		category: Category
+		priority: Int
 		subCategories: [SubCategory]
 		imageUrl: String
 		isActive: Boolean
@@ -53,9 +54,9 @@ const typeDefs = gql`
 
 	type Mutation {
 		addUser(name: String!, email: String!, password: String!, companyName: String, isAdmin: Boolean, isPartner: Boolean): Auth
-		addProduct(name: String!, description: String, allergens: String, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID]): Product
+		addProduct(name: String!, description: String, allergens: String, price: Int!, imageUrl: String, categoryId: ID!, subCategories: [ID], priority: Int): Product
 		toggleProduct(productId: ID!, status: Boolean) : Product
-		editProduct(productId: ID!, name: String, description: String, allergens: String, price: Int, category: ID): Product
+		editProduct(productId: ID!, name: String, description: String, allergens: String, price: Int, category: ID, priority: Int): Product
 		deleteProduct(productId: ID!) : Deleted
 		addCategory(name: String!, priority: Int): Category
 		updateCategory(categoryId: ID!, name: String, priority: Int): Category

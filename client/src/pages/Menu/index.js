@@ -35,10 +35,10 @@ function Menu() {
 			})}
 
 			<small>
-				<em><strong>Allergens:</strong> 1 Gluten, 2 Dairy, 3 Egg, 4 Nuts</em>
+				<em><strong>Allergens:</strong> 1 Gluten, 2 Dairy, 3 Egg, 4 Nuts, 5 Sulfites</em>
 			</small>
 
-			<CallToAction />
+			{/* <CallToAction /> */}
 		</>
 		
 	);

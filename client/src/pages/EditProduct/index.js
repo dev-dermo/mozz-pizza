@@ -24,6 +24,7 @@ function EditProduct() {
 		"allergens": product.allergens,
 		"price": product.price,
 		"category": product.category._id,
+		"priority": product.priority
 	});
 
 	const handleFormSubmit = async (event) => {
@@ -45,6 +46,8 @@ function EditProduct() {
 
 		if (name === 'price') {
 			value = parseInt(value);
+		} else if (name === 'priority') {
+			value = parseInt(value);
 		}
 
 		setFormState({
@@ -64,7 +67,7 @@ function EditProduct() {
 	return (
 		<div className="row">
 			<div className="col-12">
-				<h2>Edit: {product.name}</h2>
+				<h2>Editing: {product.name}</h2>
 			</div>
 
 			<div className="col">
@@ -125,6 +128,20 @@ function EditProduct() {
 					</div>
 
 					<div className="form-group">
+						<label htmlFor="priority">Priority</label>
+						<input
+							onChange={handleChange}
+							id="priority"
+							name="priority"
+							value={formState.priority}
+							className="form-control"
+							type="number"
+							placeholder="0"
+							required
+						/>
+					</div>
+
+					<div className="form-group">
 						<label htmlFor="category">Category</label>
 						<select
 							onChange={handleChange}
@@ -133,7 +150,7 @@ function EditProduct() {
 							className="form-control"
 							required
 						>
-							<option value={product.category._id}>Current ({product.category.name})</option>
+							<option value={product.category._id}>{product.category.name} (current)</option>
 							{categories.map(category => {
 								return (
 									<option
