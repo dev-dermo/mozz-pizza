@@ -38,9 +38,7 @@ function AddProducts() {
 				},
 			});
 
-			console.log(response);
-
-			window.location.reload();
+			// window.location.reload();
 		} catch (error) {
 			console.error(error);
 		}

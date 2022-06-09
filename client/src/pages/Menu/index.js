@@ -30,7 +30,11 @@ function Menu() {
 
 			{loading && loadingCategories ? <p>Loading...</p> : categories.map(category => {
 				return (
-					<ProductList key={category._id} category={category.name} products={filterCategories(products, category.name)} />
+					<ProductList
+						key={category._id}
+						category={category.name}
+						products={filterCategories(products, category.name)}
+					/>
 				);
 			})}
 
